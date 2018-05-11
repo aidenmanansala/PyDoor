@@ -6,3 +6,4 @@ Type these commands while in the root directory
 #5 pip install flask
 #6 pip install werkzeug
 #7 nohup python backdoor.py &
+NOTE: Make sure to edit "backdoor.py" to fit correct file extensions and file upload landing folder.
