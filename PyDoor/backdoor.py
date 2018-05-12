@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request, redirect, url_for
+from flask import *
 from werkzeug import secure_filename
 
 UPLOAD_FOLDER = 'static' #folder where the uploaded files go
@@ -12,7 +12,17 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
-@app.route("/", methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
+def login():
+	error = None
+	if request.method == 'POST':
+		if request.form['username'] != 'admin' or request.form['password'] != 'admin':
+			error = 'Invalid Credentials'
+		else:
+			return redirect(url_for('admin'))
+	return render_template('login.html', error=error)
+
+@app.route("/pydoor", methods=['GET', 'POST'])
 def admin():
     if request.method == 'POST':
         file = request.files['file']
